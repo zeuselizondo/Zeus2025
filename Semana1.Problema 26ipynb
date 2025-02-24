@@ -1,0 +1,107 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNNO05TkrphiYtGllw1pPRZ",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/zeuselizondo/Zeus2025/blob/main/Semana1.Problema%2026ipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def mostrar_menu():\n",
+        "    print(\"\\n--- Menú de la Agenda de Contactos ---\")\n",
+        "    print(\"1. Agregar un nuevo contacto\")\n",
+        "    print(\"2. Ver todos los contactos\")\n",
+        "    print(\"3. Buscar un contacto\")\n",
+        "    print(\"4. Eliminar un contacto\")\n",
+        "    print(\"5. Salir\")\n",
+        "\n",
+        "def agregar_contacto(agenda):\n",
+        "    nombre = input(\"Ingrese el nombre del contacto: \")\n",
+        "    telefono = input(\"Ingrese el número de teléfono: \")\n",
+        "    email = input(\"Ingrese el correo electrónico: \")\n",
+        "    agenda[nombre] = {'telefono': telefono, 'email': email}\n",
+        "    print(f\"Contacto de {nombre} agregado exitosamente.\")\n",
+        "\n",
+        "def ver_contactos(agenda):\n",
+        "    if not agenda:\n",
+        "        print(\"La agenda está vacía.\")\n",
+        "    else:\n",
+        "        print(\"\\n--- Contactos en la agenda ---\")\n",
+        "        for nombre, datos in agenda.items():\n",
+        "            print(f\"Nombre: {nombre}\")\n",
+        "            print(f\"  Teléfono: {datos['telefono']}\")\n",
+        "            print(f\"  Email: {datos['email']}\\n\")\n",
+        "\n",
+        "def buscar_contacto(agenda):\n",
+        "    nombre = input(\"Ingrese el nombre del contacto a buscar: \")\n",
+        "    if nombre in agenda:\n",
+        "        print(f\"\\n--- Información del contacto ---\")\n",
+        "        print(f\"Nombre: {nombre}\")\n",
+        "        print(f\"Teléfono: {agenda[nombre]['telefono']}\")\n",
+        "        print(f\"Email: {agenda[nombre]['email']}\")\n",
+        "    else:\n",
+        "        print(f\"No se encontró el contacto con el nombre {nombre}.\")\n",
+        "\n",
+        "def eliminar_contacto(agenda):\n",
+        "    nombre = input(\"Ingrese el nombre del contacto a eliminar: \")\n",
+        "    if nombre in agenda:\n",
+        "        del agenda[nombre]\n",
+        "        print(f\"Contacto de {nombre} eliminado exitosamente.\")\n",
+        "    else:\n",
+        "        print(f\"No se encontró el contacto con el nombre {nombre}.\")\n",
+        "\n",
+        "def main():\n",
+        "\n",
+        "    agenda = {}\n",
+        "\n",
+        "    while True:\n",
+        "        mostrar_menu()\n",
+        "        opcion = input(\"Seleccione una opción (1-5): \")\n",
+        "\n",
+        "        if opcion == '1':\n",
+        "            agregar_contacto(agenda)\n",
+        "        elif opcion == '2':\n",
+        "            ver_contactos(agenda)\n",
+        "        elif opcion == '3':\n",
+        "            buscar_contacto(agenda)\n",
+        "        elif opcion == '4':\n",
+        "            eliminar_contacto(agenda)\n",
+        "        elif opcion == '5':\n",
+        "            print(\"Saliendo de la agenda...\")\n",
+        "            break\n",
+        "        else:\n",
+        "            print(\"Opción no válida. Por favor, elija una opción entre 1 y 5.\")\n",
+        "\n",
+        "if __name__ == \"__main__\":\n",
+        "    main()"
+      ],
+      "metadata": {
+        "id": "ChkhCVjBadlG"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
